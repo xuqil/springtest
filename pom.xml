@@ -16,6 +16,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <!--docker-->
+        <docker.image.prefix>mistra</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -41,6 +43,33 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <!--&lt;!&ndash; 镜像地址 &ndash;&gt;-->
+                    <!--<imageName>${docker.image.prefix}/${project.artifactId}</imageName>-->
+                    <!--&lt;!&ndash; docker的DockerFile配置文件路径 &ndash;&gt;-->
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <!--&lt;!&ndash; 远程docker容器的地址 &ndash;&gt;-->
+                    <!--&lt;!&ndash;<dockerHost>http://192.168.100.10:2375</dockerHost>&ndash;&gt;-->
+                    <!--<resources>-->
+                        <!--<resource>-->
+                            <!--<targetPath>/</targetPath>-->
+                            <!--<directory>${project.build.directory}</directory>-->
+                            <!--<include>${project.build.finalName}.jar</include>-->
+                        <!--</resource>-->
+                    <!--</resources>-->
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 
