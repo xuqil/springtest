@@ -17,8 +17,8 @@ pipeline {
             agent any
             steps {
                 sh 'cd ..'
-                sh 'cd scripts'
                 sh 'ls'
+                sh 'pwd'
                 sh 'bash start.sh'
             }
         }
