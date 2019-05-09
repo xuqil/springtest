@@ -16,9 +16,8 @@ pipeline {
         stage('部署') {
             agent any
             steps {
-                sh 'cd main/scripts'
                 sh 'chmod 755 start.sh'
-                sh 'bash start.sh'
+                sh './start.sh'
             }
         }
     }
