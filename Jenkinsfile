@@ -17,11 +17,6 @@ pipeline {
             steps {
                 sh 'docker build -t springboot:1.1 . '
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
         }
 
     }
