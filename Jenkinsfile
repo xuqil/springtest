@@ -16,6 +16,7 @@ pipeline {
         stage('部署') {
             agent any
             steps {
+                sh 'sed -i "s/\r//" a.sh'
                 sh 'chmod 755 start.sh'
                 sh './start.sh'
             }
