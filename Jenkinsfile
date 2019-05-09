@@ -6,14 +6,14 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('编译') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean install -Dmaven.test.skip=true'
             }
         }
-        stage('Test'){
+        stage('构建镜像'){
             steps {
-                sh 'mvn test'
+                sh 'docker build -t springboot:1.1 . '
             }
             post {
                 always {
@@ -21,10 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
-        }
+
     }
 }
