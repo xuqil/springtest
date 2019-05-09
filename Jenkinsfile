@@ -16,8 +16,9 @@ pipeline {
         stage('部署') {
             agent any
             steps {
-                sh 'cd /var/lib/jenkins/workspace/scripts/'
-                sh './start.sh'
+                sh 'cd /var/lib/jenkins/workspace/scripts'
+                sh 'ls'
+                sh 'bash start.sh'
             }
         }
     }
