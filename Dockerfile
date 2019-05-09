@@ -1,4 +1,5 @@
 FROM java:8
+WORKDIR /www/wwwroot/springboot
 VOLUME /tmp
 ADD target/springtest-0.0.1-SNAPSHOT.jar springtest.jar
 RUN bash -c 'touch /springtest.jar'
