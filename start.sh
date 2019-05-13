@@ -17,8 +17,8 @@ DATE=`date +%Y%m%d%H%M`
 
 # 最新构建代码 移动到项目环境
 function transfer(){
-    echo "最新构建代码 $SOURCE_PATH/$SERVER_NAME/target/$SPRING_NAME.jar 迁移至 $BASE_PATH ...."
-        cp target/$SPRING_NAME.jar $BASE_PATH/$SRPINGTO_NAME.jar
+    echo "最新构建代码 $SOURCE_PATH$SPRING_NAME.jar 迁移至 $BASE_PATH ...."
+        cp $SOURCE_PATH$SPRING_NAME.jar $BASE_PATH/$SRPINGTO_NAME.jar
     echo "迁移完成"
 }
 
